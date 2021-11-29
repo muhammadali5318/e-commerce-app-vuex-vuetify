@@ -71,7 +71,10 @@
                 <a href="#">Terms and conditions</a>
               </p>
 
-              <v-btn class="success pa-7 px-12" @click="submit"
+              <v-btn
+                class="white--text blue darken-4 pa-7 px-12"
+                elevation="2"
+                @click="submit"
                 >Create Shopify Id</v-btn
               >
 

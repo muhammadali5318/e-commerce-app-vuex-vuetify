@@ -31,7 +31,12 @@
                 @click:append="show1 = !show1"
               ></v-text-field>
 
-              <v-btn class="success" @click="submit">Submit</v-btn>
+              <v-btn
+                class="white--text blue darken-4 px-4"
+                elevation="2"
+                @click="submit"
+                >Login</v-btn
+              >
 
               <v-snackbar
                 top
@@ -82,9 +87,6 @@ export default {
   },
   methods: {
     submit() {
-      // let validate = true;
-      // alert("hello");
-      // alert();
       if (this.$refs.form.validate()) {
         const keys = Object.keys(localStorage);
 

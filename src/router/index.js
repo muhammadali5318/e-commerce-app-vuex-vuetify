@@ -4,7 +4,10 @@ import Home from '../views/Home.vue'
 import SignUp from '../views/SignUp.vue'
 import SignIn from '../views/SignIn.vue'
 import ProductsView from '../views/ProductsView.vue'
-import UserProfile from '../views/UserProfile'
+import UserProfile from '../views/UserProfile.vue'
+import singleProduct from '../views/SingleProduct.vue'
+import cart from '../views/Cart.vue'
+import viewcart from '../views/ViewCart'
 
 Vue.use(VueRouter)
 
@@ -22,6 +25,21 @@ const routes = [{
         path: '/ProductsView',
         name: 'ProductsView',
         component: ProductsView
+    },
+    {
+        path: '/singleProduct',
+        name: 'singleProduct',
+        component: singleProduct
+    },
+    {
+        path: '/cart',
+        name: 'cart',
+        component: cart
+    },
+    {
+        path: '/viewcart',
+        name: 'viewcart',
+        component: viewcart
     },
     {
         path: '/UserProfile',

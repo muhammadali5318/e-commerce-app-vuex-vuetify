@@ -5,6 +5,7 @@
     </div>
   </div> -->
   <section style="height: 100%" class="d-flex align-center blue darken-3">
+    <!-- <appbar /> -->
     <v-container v-for="data in currentUserData" :key="data.email">
       <v-sheet elevation="10" class="rounded pa-5 py-16" color="white">
         <v-form v-on:submit.prevent="show" ref="test">
@@ -39,7 +40,7 @@
               lg="4"
               xl="4"
             >
-              <h2>Profile settings</h2>
+              <h2>User Information</h2>
               <v-row justify="center">
                 <v-col cols="12">
                   <v-card ref="form" flat>
@@ -185,8 +186,12 @@
 </template>
 
 <script>
+// import appbar from "../components/AppBar.vue";
 export default {
   name: "UserProfile",
+  components: {
+    // appbar,
+  },
   data() {
     return {
       currentUserData: [],

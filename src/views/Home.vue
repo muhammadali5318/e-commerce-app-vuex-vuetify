@@ -2,7 +2,7 @@
   <!-- <hello-world /> -->
   <div class="blue-grey">
     <!-- <test /> -->
-    <appbar />
+    <!-- <appbar /> -->
     <v-sheet
       id="scrolling-techniques-7"
       class="overflow-y-auto blue lighten-5"
@@ -50,7 +50,6 @@
                 width="100%"
                 class="white--text blue darken-4 py-8"
                 elevation="2"
-                small
                 x-large
                 @click="snackbar = true"
                 >Start free trial</v-btn
@@ -112,13 +111,12 @@
                   text-h4 text-sm-h4 text-md-h4 text-lg-h3 text-xl-h3
                 "
               >
-                Bring your business online
+                Start your online shopping journy now.
               </div>
 
               <p class="headline font-weight-light mt-5">
                 More than a million of the world's most successful brands trust
-                Shopify to sell, ship and process payments anywhere. Email
-                address
+                Shopify to sell, ship and process payments anywhere.
               </p>
             </v-card>
           </v-col>
@@ -158,8 +156,8 @@
                 ></v-progress-linear>
               </template>
 
-              <!-- <v-img height="250" src="../assets/cat/men.jpg"></v-img> -->
-              <img height="250" src="../assets/cat/men.jpg" alt="" />
+              <v-img height="250" src="../assets/cat/men.jpg"></v-img>
+              <!-- <img height="250" src="../assets/cat/men.jpg" alt="" /> -->
               <v-card-title>{{ data.categoryName }}</v-card-title>
 
               <v-card-text>
@@ -176,16 +174,16 @@
                   <div class="grey--text ms-4">4.5 (413)</div>
                 </v-row>
 
-                <div class="my-4 text-subtitle-1">$ • Italian, Cafe</div>
+                <!-- <div class="my-4 text-subtitle-1">$ • Italian, Cafe</div> -->
 
-                <div>
-                  Small plates, salads & sandwiches - an intimate setting with
-                  12 indoor seats plus patio seating.
+                <div class="my-4">
+                  Clothing, jewelery & Electronics - You can find every thing
+                  under one roof.
                 </div>
               </v-card-text>
 
               <v-card-actions>
-                <v-btn color="deep-purple lighten-2" text @click="route">
+                <v-btn color="blue lighten-1" text @click="route">
                   Explore
                 </v-btn>
               </v-card-actions>
@@ -218,8 +216,8 @@
 
         <v-row class="mb-16" gutters>
           <v-col
-            v-for="n in 4"
-            :key="n"
+            v-for="n in infoSection"
+            :key="n.title"
             cols="12"
             xs="12"
             sm="6"
@@ -228,8 +226,8 @@
             xl="3"
           >
             <div>
-              <v-icon x-large color="blue lighten-5">mdi-magnify</v-icon>
-              <h2 class="white--text mt-6 mb-3">we are here</h2>
+              <v-icon x-large color="blue lighten-5">{{ n.icon }}</v-icon>
+              <h2 class="white--text mt-6 mb-3">{{ n.title }}</h2>
               <p class="white--text font-weight-regular">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem
                 dolorem illum, incidunt odit corrupti perspiciatis deleniti aut
@@ -241,76 +239,10 @@
         </v-row>
       </v-container>
     </v-sheet>
-
-    <!-- 888888888888888888888888888888888888 testing 8888888888888888888888888888888888888888888 -->
-
-    <v-container class="d-flex">
-      <v-row>
-        <v-col
-          v-for="data in d"
-          :key="data.id"
-          class="mt-9"
-          cols="12"
-          xs="12"
-          sm="6"
-          md="4"
-          lg="3"
-          xl="3"
-        >
-          <v-hover v-slot="{ hover }">
-            <v-card
-              class="mx-auto fill-height"
-              color="grey lighten-4"
-              max-height="1000"
-              max-width="600"
-            >
-              <v-img height="500" width="100%" :src="data.image">
-                <v-expand-transition>
-                  <div
-                    v-if="hover"
-                    class="
-                      d-flex
-                      transition-fast-in-fast-out
-                      blue
-                      darken-2
-                      v-card--reveal
-                      text-h2
-                      white--text
-                    "
-                    style="height: 100%"
-                  >
-                    ${{ data.price }}
-                  </div>
-                </v-expand-transition>
-              </v-img>
-              <v-card-text class="pt-6" style="position: relative">
-                <v-btn
-                  absolute
-                  color="blue"
-                  class="white--text"
-                  fab
-                  large
-                  right
-                  top
-                >
-                  <v-icon>mdi-cart</v-icon>
-                </v-btn>
-                <div class="font-weight-light grey--text text-h6 mb-2">
-                  {{ data.category }}
-                </div>
-                <h3 class="text-h4 font-weight-light blue--text mb-2">
-                  {{ data.title }}
-                </h3>
-                <div class="font-weight-light text-h6 mb-2">
-                  {{ data.description }}
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-hover>
-        </v-col>
-      </v-row>
-    </v-container>
-    <!-- 888888888888888888888888888888888888 testing 8888888888888888888888888888888888888888888 -->
+    <!-- ***************************************************************** -->
+    <!-- ***************************************************************** -->
+    <BodySection />
+    <HomeCard />
     <Footer />
     <!-- <About /> -->
   </div>
@@ -318,10 +250,10 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
-// import test from "../components/test.vue";
-import appbar from "../components/AppBar.vue";
+import BodySection from "../components/BodySection.vue";
+// import appbar from "../components/AppBar.vue";
 // import HelloWorld from "../components/HelloWorld";
-// import HelloWorld from "../components/HelloWorld.vue";
+import HomeCard from "../components/homeCard.vue";
 import Footer from "./Footer.vue";
 // import About from "./About.vue";
 
@@ -350,7 +282,24 @@ export default {
           categoryName: "women's clothing",
         },
       ],
-      pa: "../assets/cat/wommen.jpg",
+      infoSection: [
+        {
+          title: "Start online Shopping now",
+          icon: "mdi-cursor-default-click",
+        },
+        {
+          title: "Move your business online",
+          icon: "mdi-arrow-expand-horizontal",
+        },
+        {
+          title: "Hire a Shopify expert",
+          icon: "mdi-account-multiple",
+        },
+        {
+          title: "Switch to Shopify",
+          icon: "mdi-home-switch",
+        },
+      ],
     };
   },
   components: {
@@ -358,8 +307,10 @@ export default {
     // About,
     // test,/
     // HelloWorld,
+    BodySection,
     Footer,
-    appbar,
+    HomeCard,
+    // appbar,
   },
   computed: {
     ...mapState(["post"]),
@@ -369,9 +320,9 @@ export default {
     route() {
       this.$router.push({ name: "ProductsView" });
     },
-    fetchdata(apiId) {
-      this.$store.dispatch("apiCall", apiId);
-    },
+    // fetchdata(apiId) {
+    //   this.$store.dispatch("apiCall", apiId);
+    // },
   },
   mounted() {
     if (localStorage.getItem("currentUser") === "") {
