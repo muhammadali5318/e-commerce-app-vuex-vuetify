@@ -9,9 +9,6 @@
       <v-btn @click="logout" outlined color="grey darken-4" class="ma-0">
         <span> Log out</span> <v-icon right>mdi-exit-to-app</v-icon></v-btn
       >
-      <v-btn @click="route" outlined color="grey darken-4" class="ma-0">
-        <span> View Cart</span> <v-icon right>mdi-exit-to-app</v-icon></v-btn
-      >
     </v-app-bar>
 
     <v-navigation-drawer
@@ -30,7 +27,7 @@
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
-            @click="show(item.routeName)"
+            @click="route(item.routeName)"
           >
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
@@ -60,17 +57,19 @@ export default {
           icon: "mdi-bag-checked",
           routeName: "ProductsView",
         },
+        {
+          text: "View Cart",
+          icon: "mdi-bag-checked",
+          routeName: "viewcart",
+        },
         { text: "About us", icon: "mdi-information", routeName: "" },
         { text: "Contact us", icon: "mdi-card-account-phone", routeName: "" },
       ],
     };
   },
   methods: {
-    show(data) {
-      this.$router.push({ name: data });
-    },
-    route() {
-      this.$router.push({ name: "viewcart" });
+    route(routeName) {
+      this.$router.push({ name: routeName });
     },
     logout() {
       this.$router.push({ name: "SignIn" });

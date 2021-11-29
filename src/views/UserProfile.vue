@@ -268,7 +268,6 @@ export default {
     for (let key of keys) {
       if (this.currentUser === key) {
         this.currentUserData.push(JSON.parse(localStorage.getItem(key)));
-        console.log(this.currentUserData);
       }
     }
   },

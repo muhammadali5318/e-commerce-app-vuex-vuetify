@@ -16,7 +16,7 @@
                 text-h4 text-sm-h4 text-md-h4 text-lg-h3 text-xl-h3
               "
             >
-              Start your business journey with Shopify
+              Start your online shopping journey with Shopify
             </div>
 
             <p
@@ -31,7 +31,7 @@
               elevation="2"
               x-large
               @click="route"
-              >Buy Now</v-btn
+              >Shop More</v-btn
             >
 
             <div class="text-body-1 mt-8">

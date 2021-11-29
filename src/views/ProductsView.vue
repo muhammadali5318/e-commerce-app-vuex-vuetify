@@ -1,6 +1,5 @@
 <template>
   <div class="blue darken-2">
-    <!-- <appbar /> -->
     <v-container class="mb-10">
       <v-row>
         <v-col cols="12" lg="2">
@@ -12,7 +11,7 @@
                   v-for="(item, i) in items"
                   :key="i"
                   @click="
-                    item.sta
+                    item.Categorystatus
                       ? fetchProductsByCategoryName(item.text)
                       : fetchAllProducts()
                   "
@@ -100,7 +99,6 @@
       >
         Categories:
       </div>
-      <!-- <h2 >hello</h2> -->
       <skeletonLader v-if="getLoaderState" />
       <allProducts v-if="allProductsStatus" />
       <productsByCategoryName v-if="productsByCategoryNameStatue" />
@@ -125,7 +123,6 @@ export default {
     skeletonLader,
     allProducts,
     productsByCategoryName,
-    // appbar,s
   },
   data() {
     return {
@@ -133,11 +130,15 @@ export default {
       productsByCategoryNameStatue: true,
       selectedItem: 0,
       items: [
-        { text: "jewelery", icon: "mdi-diamond-stone", sta: true },
-        { text: "electronics", icon: "mdi-boombox", sta: true },
-        { text: "men's clothing", icon: "mdi-face-man", sta: true },
-        { text: "women's clothing", icon: "mdi-face-woman", sta: true },
-        { text: "View All", icon: "mdi-gift-open", sta: false },
+        { text: "jewelery", icon: "mdi-diamond-stone", Categorystatus: true },
+        { text: "electronics", icon: "mdi-boombox", Categorystatus: true },
+        { text: "men's clothing", icon: "mdi-face-man", Categorystatus: true },
+        {
+          text: "women's clothing",
+          icon: "mdi-face-woman",
+          Categorystatus: true,
+        },
+        { text: "View All", icon: "mdi-gift-open", Categorystatus: false },
       ],
       length: 3,
       onboarding: 0,
@@ -172,8 +173,6 @@ export default {
   },
   computed: {
     ...mapState(["post"]),
-    // ...mapGetters(["getCat"]),
-    // ...mapGetters(["getSingleProduct"]),
     ...mapGetters(["getLoaderState"]),
   },
   mounted() {
@@ -181,7 +180,6 @@ export default {
       this.$router.push({ name: "SignIn" });
     }
     this.$store.dispatch("fetchProductsByCategoryName", "jewelery");
-    // this.$store.dispatch("fetchCurrentUserCart");
   },
 };
 </script>
