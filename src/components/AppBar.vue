@@ -49,6 +49,7 @@ export default {
     return {
       drawer: null,
       selectedItem: 0,
+      appBarStatus: true,
       items: [
         { text: "Home", icon: "mdi-home", routeName: "Home" },
         { text: "Profile", icon: "mdi-account-box", routeName: "UserProfile" },
@@ -75,6 +76,11 @@ export default {
       this.$router.push({ name: "SignIn" });
       localStorage.setItem("currentUser", "");
     },
+  },
+  created() {
+    // if (localStorage.getItem("currentUser") === "") {
+    //   this.appBarStatus = false;
+    // }
   },
 };
 </script>

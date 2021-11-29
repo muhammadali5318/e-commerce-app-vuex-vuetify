@@ -107,6 +107,19 @@
               <v-btn color="blue darken-1" x-large outlined text @click="show">
                 <span> Add to cart </span> <v-icon right>mdi-cart</v-icon>
               </v-btn>
+              <v-snackbar
+                top
+                center
+                color="success"
+                v-model="snackbar"
+                timeout="2000"
+              >
+                <span class="group">
+                  {{ text }}
+
+                  <v-icon dark>mdi-check-decagram-outline </v-icon>
+                </span>
+              </v-snackbar>
               <v-card-actions> </v-card-actions>
             </v-card>
           </v-col>
@@ -132,6 +145,12 @@ export default {
     HomeCard,
     SkeletonLoader,
   },
+  data() {
+    return {
+      snackbar: false,
+      text: "Added to cart",
+    };
+  },
 
   computed: {
     ...mapGetters(["getSingleProduct"]),
@@ -139,6 +158,7 @@ export default {
   },
   methods: {
     show() {
+      this.snackbar = true;
       // alert(this.getSingleProduct);
       // console.log(this.getSingleProduct);
       this.$store.dispatch("addProductToCart", this.getSingleProduct);
@@ -152,3 +172,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.group {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+</style>
