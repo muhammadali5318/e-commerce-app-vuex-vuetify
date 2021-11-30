@@ -56,7 +56,7 @@
                 ref="phoneNo"
               ></v-text-field>
 
-              <v-text-field.
+              <v-text-field
                 v-model="userData.password"
                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                 :type="show1 ? 'text' : 'password'"
@@ -65,7 +65,7 @@
                 :rules="passwordRules"
                 @click:append="show1 = !show1"
                 hint="Must contain 1 Small and Capital letter, 1 digit (Special Characters not allowed)"
-              ></v-text-field.>
+              ></v-text-field>
 
               <p class="mt-5 font-weight-light">
                 By proceeding, you agree to the
