@@ -1,6 +1,36 @@
 <template>
   <div>
-    <h1>Hello</h1>
+    <!-- ************************************************************************* -->
+    <v-row>
+      <v-col cols="12" class="mt-7 py-2 px-13">
+        <h3 class="ms-2 mb-5">Filter Results:</h3>
+        <v-btn-toggle v-model="text" tile color="blue darken-2" group>
+          <v-btn value="left" @click="sort('asc')"> Ascending Sort </v-btn>
+
+          <v-btn value="center" @click="sort('desc')"> Decending Sort </v-btn>
+
+          <v-menu offset-y>
+            <template value="right" v-slot:activator="{ on, attrs }">
+              <v-btn fdark v-bind="attrs" v-on="on">
+                Dropdown
+                <v-icon right>mdi-chevron-down </v-icon>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item v-for="(item, index) in items" :key="index">
+                <v-list-item-title
+                  @click="show(item.id)"
+                  style="cursor: pointer"
+                  >{{ item.title }}</v-list-item-title
+                >
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-btn-toggle>
+      </v-col>
+    </v-row>
+    <!-- ************************************************************************* -->
+
     <v-row>
       <v-col
         v-for="data in getAllProducts"
@@ -18,7 +48,9 @@
             <v-img height="100%" :src="data.image" alt=""></v-img>
           </v-responsive>
           <!-- <img /> -->
-          <v-card-title style="height: 10rem">{{ data.title }}</v-card-title>
+          <v-card-title style="height: 10rem"
+            >{{ data.title }} - {{ data.id }}</v-card-title
+          >
 
           <v-card-text>
             <v-row align="center" class="mx-0">
@@ -59,7 +91,29 @@
 import { mapState, mapGetters } from "vuex";
 export default {
   name: "allProducts",
+  data() {
+    return {
+      items: [
+        { title: "fetch 5", id: 5 },
+        { title: "fetch 10", id: 10 },
+        { title: "fetch 15", id: 15 },
+        { title: "fetch 20", id: 20 },
+      ],
+      text: "left",
+      icon: "justify",
+      toggle_none: null,
+      toggle_one: 0,
+      toggle_exclusive: 2,
+      toggle_multiple: [0, 1, 2],
+    };
+  },
   methods: {
+    show(data) {
+      this.$store.dispatch("fetchAllProducts", data);
+    },
+    sort(data) {
+      this.$store.dispatch("fetchAllProducts", data);
+    },
     fetchAllProducts() {
       this.allProductsStatus = true;
       this.$store.dispatch("fetchAllProducts");

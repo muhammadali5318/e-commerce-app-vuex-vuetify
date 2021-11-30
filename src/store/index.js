@@ -51,19 +51,70 @@ export default new Vuex.Store({
                 })
                 // console.log(commit);
         },
-        fetchAllProducts({ commit }) {
-            commit("SET_LOADER", true)
+        fetchAllProducts({ commit }, payload) {
+            // console.log(payload);
+            if (payload == "desc") {
 
-            Vue.axios.get("https://fakestoreapi.com/products?limit=20").then((response) => {
-                let data = response.data;
-                // console.log(data);
+                commit("SET_LOADER", true)
 
-                commit('SET_ALL_PRODUCTS', data);
-                // console.log(commit);
-                commit("SET_LOADER", false)
+                Vue.axios.get(`https://fakestoreapi.com/products?sort=${payload}`).then((response) => {
+                    let data = response.data;
+                    // console.log(data);
+                    alert("from sort")
+                    console.log(data);
+
+                    commit('SET_ALL_PRODUCTS', data);
+                    // console.log(commit);
+                    commit("SET_LOADER", false)
 
 
-            })
+                })
+            } else if (payload == "asc") {
+
+                commit("SET_LOADER", true)
+
+                Vue.axios.get(`https://fakestoreapi.com/products?sort=${payload}`).then((response) => {
+                    let data = response.data;
+                    // console.log(data);
+                    alert("from sort")
+                    console.log(data);
+
+                    commit('SET_ALL_PRODUCTS', data);
+                    // console.log(commit);
+                    commit("SET_LOADER", false)
+
+
+                })
+            } else if (!isNaN(payload)) {
+                alert("from limit")
+                commit("SET_LOADER", true)
+
+                Vue.axios.get(`https://fakestoreapi.com/products?limit=${payload}`).then((response) => {
+                    let data = response.data;
+                    // console.log(data);
+
+                    commit('SET_ALL_PRODUCTS', data);
+                    // console.log(commit);
+                    commit("SET_LOADER", false)
+
+
+                })
+            } else {
+
+                alert("simple")
+                commit("SET_LOADER", true)
+
+                Vue.axios.get("https://fakestoreapi.com/products?limit=20").then((response) => {
+                    let data = response.data;
+                    // console.log(data);
+
+                    commit('SET_ALL_PRODUCTS', data);
+                    // console.log(commit);
+                    commit("SET_LOADER", false)
+
+
+                })
+            }
         },
 
         fetchSingleProductData({ commit }, payload) {

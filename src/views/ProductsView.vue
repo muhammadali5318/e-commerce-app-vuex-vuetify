@@ -162,9 +162,9 @@ export default {
         this.$store.dispatch("fetchProductsByCategoryName", apiId);
     },
     fetchAllProducts() {
-      (this.allProductsStatus = true),
-        (this.productsByCategoryNameStatue = false),
-        this.$store.dispatch("fetchAllProducts");
+      this.allProductsStatus = true;
+      this.productsByCategoryNameStatue = false;
+      this.$store.dispatch("fetchAllProducts");
     },
     fetchSingleProductData(apiId) {
       this.$store.dispatch("fetchSingleProductData", apiId);
