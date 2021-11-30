@@ -136,6 +136,7 @@ export default new Vuex.Store({
             })
         },
         fetchCurrentUserCart({ commit }) {
+            console.log("fetching cart");
             let currentUserId = localStorage.getItem('currentUser');
             currentUserId = JSON.parse(localStorage.getItem(currentUserId)).id;
 

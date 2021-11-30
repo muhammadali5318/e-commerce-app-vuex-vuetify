@@ -96,6 +96,7 @@ export default {
     updateCart() {
       this.$store.dispatch("fetchCurrentUserCart");
     },
+    //needs to be done
     totalPrice() {
       for (let data of this.getCurrentUserCartData) {
         console.log(data.price);
@@ -115,15 +116,12 @@ export default {
     if (localStorage.getItem("currentUser") === "") {
       this.$router.push({ name: "SignIn" });
     }
-    this.$store.dispatch("fetchCurrentUserCart");
+    // this.$store.dispatch("fetchCurrentUserCart");
     console.log(this.getCurrentUserCartData);
 
     for (let data of this.getCurrentUserCartData) {
-      console.log(data.price);
-      console.log(typeof data.price);
       this.price += data.price;
     }
-    // console.log(this.price);
   },
 };
 </script>

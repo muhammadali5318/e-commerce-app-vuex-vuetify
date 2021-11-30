@@ -33,6 +33,7 @@ export default {
     // Vue.axios.get("https://fakestoreapi.com/products/1").then((response) => {
     //   console.log(response.data);
     // });
+    this.$store.dispatch("fetchCurrentUserCart");
   },
 };
 </script>
