@@ -182,7 +182,7 @@ export default {
     if (localStorage.getItem("currentUser") === "") {
       this.$router.push({ name: "SignIn" });
     }
-    this.$store.dispatch("cartTotalPrice");
+    // this.$store.dispatch("cartTotalPrice");
   },
 };
 </script>

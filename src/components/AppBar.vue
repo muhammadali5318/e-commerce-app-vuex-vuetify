@@ -7,7 +7,11 @@
 
       <v-spacer></v-spacer>
       <v-badge left :content="getCurrentUserCartData.length" overlap>
-        <v-icon style="cursor: pointer" color="grey darken-3" size="40"
+        <v-icon
+          style="cursor: pointer"
+          v-on:click="goToCart"
+          color="grey darken-3"
+          size="40"
           >mdi-cart
         </v-icon>
       </v-badge>
@@ -79,6 +83,9 @@ export default {
   methods: {
     route(routeName) {
       this.$router.push({ name: routeName });
+    },
+    goToCart() {
+      this.$router.push({ name: "viewcart" });
     },
     logout() {
       this.$router.push({ name: "SignIn" });

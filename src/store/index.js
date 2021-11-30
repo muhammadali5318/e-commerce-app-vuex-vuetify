@@ -41,30 +41,28 @@ export default new Vuex.Store({
     actions: {
 
         fetchProductsByCategoryName({ commit }, payload) {
-            // console.log(typeof payload);
+
             commit('SET_LOADER', true)
             Vue.axios.get(`https://fakestoreapi.com/products/category/${payload}`).then((response) => {
-                    let data = response.data;
-                    commit('SET_CAT', data)
-                    commit('SET_LOADER', false)
+                let data = response.data;
+                commit('SET_CAT', data)
+                commit('SET_LOADER', false)
 
-                })
-                // console.log(commit);
+            })
+
         },
         fetchAllProducts({ commit }, payload) {
-            // console.log(payload);
+
             if (payload == "desc") {
 
                 commit("SET_LOADER", true)
 
                 Vue.axios.get(`https://fakestoreapi.com/products?sort=${payload}`).then((response) => {
                     let data = response.data;
-                    // console.log(data);
-                    alert("from sort")
+
                     console.log(data);
 
                     commit('SET_ALL_PRODUCTS', data);
-                    // console.log(commit);
                     commit("SET_LOADER", false)
 
 
@@ -75,44 +73,27 @@ export default new Vuex.Store({
 
                 Vue.axios.get(`https://fakestoreapi.com/products?sort=${payload}`).then((response) => {
                     let data = response.data;
-                    // console.log(data);
-                    alert("from sort")
-                    console.log(data);
-
                     commit('SET_ALL_PRODUCTS', data);
-                    // console.log(commit);
                     commit("SET_LOADER", false)
 
 
                 })
             } else if (!isNaN(payload)) {
-                alert("from limit")
                 commit("SET_LOADER", true)
 
                 Vue.axios.get(`https://fakestoreapi.com/products?limit=${payload}`).then((response) => {
                     let data = response.data;
-                    // console.log(data);
-
                     commit('SET_ALL_PRODUCTS', data);
-                    // console.log(commit);
                     commit("SET_LOADER", false)
-
 
                 })
             } else {
-
-                alert("simple")
                 commit("SET_LOADER", true)
-
                 Vue.axios.get("https://fakestoreapi.com/products?limit=20").then((response) => {
                     let data = response.data;
-                    // console.log(data);
 
                     commit('SET_ALL_PRODUCTS', data);
-                    // console.log(commit);
                     commit("SET_LOADER", false)
-
-
                 })
             }
         },
@@ -151,7 +132,7 @@ export default new Vuex.Store({
                             Vue.axios.get(`https://fakestoreapi.com/products/${product.productId}`).then((response) => {
                                 commit("SET_LOADER", false)
                                 commit('SET_CURRENTUSERCART', response.data)
-                                    // console.log(response);
+
 
 
                             })
@@ -166,32 +147,32 @@ export default new Vuex.Store({
         },
         //When user click on add to cart button this action will be fired and product will be pushed into the array
         addProductToCart({ commit }, payload) {
-
             commit('SET_CURRENTUSERCART', payload)
         },
-        cartTotalPrice({ commit }) {
-            alert("cart total price")
-            console.log(commit);
+        // ********************Need to ask **********************************
+        // cartTotalPrice({ commit }) {
+        //     // alert("cart total price")
+        //     console.log(commit);
 
-            // console.log(this.state.currentUserCart);
-            // console.log("comming from cart price");
-            let price = this.state.currentUserCart;
-            // console.log(price);
-            // console.log(price);
-            // for (let data in price) {
-            //     console.log(data);
-            // }
+        //     // console.log(this.state.currentUserCart);
+        //     // console.log("comming from cart price");
+        //     let price = this.state.currentUserCart;
+        //     // console.log(price);
+        //     // console.log(price);
+        //     // for (let data in price) {
+        //     //     console.log(data);
+        //     // }
 
-            // let keys = Object.keys(price);
+        //     // let keys = Object.keys(price);
 
-            price.forEach(key => {
-                    // let item = price[key];
-                    console.log(key);
-                    //...work with item
-                })
-                // console.log(price);
-                // console.log(commit);
-        }
+        //     price.forEach(key => {
+        //             // let item = price[key];
+        //             console.log(key);
+        //             //...work with item
+        //         })
+        //         // console.log(price);
+        //         // console.log(commit);
+        // }
 
 
     },

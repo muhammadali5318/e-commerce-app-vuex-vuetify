@@ -182,6 +182,7 @@
                 </div>
               </v-card-text>
 
+              <v-divider></v-divider>
               <v-card-actions>
                 <v-btn color="blue lighten-1" text @click="route">
                   Explore
