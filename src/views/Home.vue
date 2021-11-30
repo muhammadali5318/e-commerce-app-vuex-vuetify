@@ -156,7 +156,7 @@
                 ></v-progress-linear>
               </template>
 
-              <v-img height="250" src="../assets/cat/men.jpg"></v-img>
+              <v-img height="250" :src="data.image"></v-img>
               <!-- <img height="250" src="../assets/cat/men.jpg" alt="" /> -->
               <v-card-title>{{ data.categoryName }}</v-card-title>
 
@@ -266,19 +266,23 @@ export default {
       text: "Subscribed",
       categoryData: [
         {
-          image: "../assets/cat/elec.jpg",
+          image:
+            "https://www.techprevue.com/wp-content/uploads/2017/06/electronic-devices-1.jpg",
           categoryName: "electronics",
         },
         {
-          image: "../assets/cat/jewe.jpg",
+          image:
+            "https://media.istockphoto.com/photos/fancy-designer-antique-golden-bracelets-for-woman-fashion-picture-id1277517088?b=1&k=20&m=1277517088&s=170667a&w=0&h=PXTQvh19pESR7mIekh3mJQHWcw2FDRrYcHdxsv9XY-Q=",
           categoryName: "jewelery",
         },
         {
-          image: "../assets/cat/men.jpg",
+          image:
+            "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xvdGhlcyUyMHNob3B8ZW58MHx8MHx8&w=1000&q=80",
           categoryName: "men's clothing",
         },
         {
-          image: "../assets/cat/wommen.jpg",
+          image:
+            "https://www.andindia.com/media/homepage_content/2/0/20211108-and-m-women-clothing-offers.jpg",
           categoryName: "women's clothing",
         },
       ],

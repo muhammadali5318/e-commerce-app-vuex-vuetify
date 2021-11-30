@@ -85,7 +85,6 @@ export default new Vuex.Store({
             })
         },
         fetchCurrentUserCart({ commit }) {
-            commit("SET_LOADER", true)
             let currentUserId = localStorage.getItem('currentUser');
             currentUserId = JSON.parse(localStorage.getItem(currentUserId)).id;
 
@@ -94,6 +93,7 @@ export default new Vuex.Store({
                 Vue.axios.get(`https://fakestoreapi.com/carts/${currentUserId}`).then((response) => {
                     let data = response.data;
                     if ((data != null)) {
+                        commit("SET_LOADER", true)
                         for (let product of data.products) {
 
                             Vue.axios.get(`https://fakestoreapi.com/products/${product.productId}`).then((response) => {

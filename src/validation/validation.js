@@ -5,7 +5,7 @@ const nameRules = [
 
 const passwordRules = [
     (value) => !!value || "Password Required.",
-    (value) => (value || "").length >= 5 || "Minimum 5 Charaters ",
+    (value) => (value || "").length >= 5 || "Must contain 1 Small and Capital letter, 1 digit (Special Characters not allowed)",
     (value) => {
         const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
         return pattern.test(value) || "Invalid Password.";
