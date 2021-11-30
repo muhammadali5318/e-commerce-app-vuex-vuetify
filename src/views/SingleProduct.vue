@@ -1,5 +1,6 @@
 <template>
   <div>
+    <appbar appbarId="2" />
     <SkeletonLoader v-if="getLoaderState" />
     <v-sheet
       v-else
@@ -131,7 +132,7 @@
   </div>
 </template>
 <script>
-// import appbar from "../components/AppBar.vue";
+import appbar from "../components/AppBar.vue";
 import HomeCard from "../components/homeCard.vue";
 import SkeletonLoader from "../components/SkeletonLoader.vue";
 import { mapGetters } from "vuex";
@@ -141,7 +142,7 @@ export default {
   name: "singleProduct",
   components: {
     Footer,
-    // appbar,
+    appbar,
     HomeCard,
     SkeletonLoader,
   },

@@ -3,11 +3,17 @@
     <v-app-bar class="blue lighten-3 text-white mb-16" app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Shopify</v-toolbar-title>
+      <v-toolbar-title>Shopify </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-btn @click="logout" outlined color="grey darken-4" class="ma-0">
-        <span> Log out</span> <v-icon right>mdi-exit-to-app</v-icon></v-btn
+      <v-badge left content="5" overlap>
+        <v-icon style="cursor: pointer" color="grey darken-3" size="40"
+          >mdi-cart
+        </v-icon>
+      </v-badge>
+
+      <v-icon size="40" color="grey darken-3" @click="logout" right
+        >mdi-exit-to-app</v-icon
       >
     </v-app-bar>
 
@@ -45,10 +51,11 @@
 <script>
 export default {
   name: "appbar",
+  props: ["appbarId"],
   data() {
     return {
       drawer: null,
-      selectedItem: 0,
+      selectedItem: Number(this.appbarId),
       appBarStatus: true,
       items: [
         { text: "Home", icon: "mdi-home", routeName: "Home" },
@@ -60,7 +67,7 @@ export default {
         },
         {
           text: "View Cart",
-          icon: "mdi-bag-checked",
+          icon: "mdi-cart",
           routeName: "viewcart",
         },
         { text: "About us", icon: "mdi-information", routeName: "" },
@@ -77,10 +84,11 @@ export default {
       localStorage.setItem("currentUser", "");
     },
   },
-  created() {
+  mounted() {
     // if (localStorage.getItem("currentUser") === "") {
     //   this.appBarStatus = false;
     // }
+    // alert(typeof );
   },
 };
 </script>

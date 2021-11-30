@@ -1,11 +1,15 @@
 <template>
   <div class="blue darken-2">
+    <!-- *********************************************************** -->
+    <Appbar appbarId="3" />
+    <!-- *********************************************************** -->
+
     <skeletonLader v-if="getLoaderState" />
     <v-container class="py-16">
       <v-row>
         <v-col
           class="my-1"
-          v-for="data in getCurrentUserCartData"
+          v-for="(data, index) in getCurrentUserCartData"
           :key="data.id"
           cols="12"
           lg="12"
@@ -23,14 +27,60 @@
                   </div>
                 </div>
               </v-col>
-              <v-col cols="12" xs="12" sm="12" md="12" lg="6" xl="6">
-                <div class="pe-16 d-flex align-center justify-end">
+              <v-col
+                class="d-flex justify-end"
+                cols="12"
+                xs="12"
+                sm="12"
+                md="12"
+                lg="6"
+                xl="6"
+              >
+                <div class="pe-16 d-flex align-center justify-between">
                   <div>
                     <h1 class="px-5">$ {{ data.price }}</h1>
                   </div>
-                  <v-icon color="red" style="cursor: pointer" size="35"
-                    >mdi-delete</v-icon
-                  >
+                  <v-row style="display: inline" justify="center">
+                    <v-dialog v-model="dialog" persistent max-width="290">
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-icon
+                          color="red"
+                          size="35"
+                          dark
+                          v-bind="attrs"
+                          v-on="on"
+                        >
+                          mdi-delete
+                        </v-icon>
+                      </template>
+                      <v-card>
+                        <v-card-title class="text-h5">
+                          Delete Cart Item
+                        </v-card-title>
+                        <v-card-text
+                          >Are you sure you want to delete this item from
+                          cart.</v-card-text
+                        >
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn
+                            color="blue darken-1"
+                            text
+                            @click="dialog = false"
+                          >
+                            Disagree
+                          </v-btn>
+                          <v-btn
+                            color="blue darken-1"
+                            text
+                            @click="deleteCartItem(index)"
+                          >
+                            Agree
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </v-row>
                 </div>
               </v-col>
             </v-row>
@@ -48,7 +98,10 @@
                   <div class="ps-16 d-flex">
                     <div>
                       <v-card-title
-                        >Total Price (To be calculated)
+                        >Total Price
+                        <v-btn class="ms-4" @click="showCart"
+                          >Total Price</v-btn
+                        >
                       </v-card-title>
                       <!-- <v-card-subtitle></v-card-subtitle> -->
                     </div>
@@ -57,11 +110,8 @@
                 <v-col cols="12" xs="12" sm="12" md="12" lg="6" xl="6">
                   <div class="pe-16 d-flex align-center justify-end">
                     <div>
-                      <h1 class="px-5">$1200</h1>
+                      <h1 class="px-5">${{ this.price }}</h1>
                     </div>
-                    <v-icon color="red" style="cursor: pointer" size="35"
-                      >mdi-delete</v-icon
-                    >
                   </div>
                 </v-col>
               </v-row>
@@ -69,6 +119,7 @@
           </v-card>
         </v-col>
       </v-row>
+      <!-- <div>{{ getCurrentUserCartData }}</div> -->
     </v-container>
     <HomeCard />
     <Footer />
@@ -79,20 +130,31 @@
 import skeletonLader from "../components/SkeletonLoader.vue";
 import HomeCard from "../components/homeCard.vue";
 import Footer from "./Footer.vue";
+import Appbar from "../components/AppBar.vue";
 import { mapGetters } from "vuex";
+
 export default {
   name: "viewcart",
   components: {
     skeletonLader,
     Footer,
     HomeCard,
+    Appbar,
   },
   data() {
     return {
       price: 0,
+      dialog: false,
     };
   },
   methods: {
+    showCart() {
+      for (let data of this.getCurrentUserCartData) {
+        console.log(data.price);
+        this.price += data.price;
+        // console.log();
+      }
+    },
     updateCart() {
       this.$store.dispatch("fetchCurrentUserCart");
     },
@@ -106,6 +168,10 @@ export default {
       console.log(this.price);
       // console.log(this.getCurrentUserCartData);
     },
+    deleteCartItem(deleteIndex) {
+      this.getCurrentUserCartData.splice(deleteIndex, 1);
+      this.dialog = false;
+    },
   },
 
   computed: {
@@ -116,12 +182,7 @@ export default {
     if (localStorage.getItem("currentUser") === "") {
       this.$router.push({ name: "SignIn" });
     }
-    // this.$store.dispatch("fetchCurrentUserCart");
-    console.log(this.getCurrentUserCartData);
-
-    for (let data of this.getCurrentUserCartData) {
-      this.price += data.price;
-    }
+    this.$store.dispatch("cartTotalPrice");
   },
 };
 </script>

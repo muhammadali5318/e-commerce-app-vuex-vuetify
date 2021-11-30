@@ -1,5 +1,6 @@
 <template>
   <div class="blue darken-2">
+    <Appbar appbarId="2" />
     <v-container class="mb-10">
       <v-row>
         <v-col cols="12" lg="2">
@@ -113,6 +114,7 @@ import HomeCard from "../components/homeCard.vue";
 import allProducts from "../components/AllProducts.vue";
 import productsByCategoryName from "../components/ProductsByCategoryName.vue";
 import skeletonLader from "../components/SkeletonLoader.vue";
+import Appbar from "../components/AppBar.vue";
 import { mapState, mapGetters } from "vuex";
 import Footer from "./Footer.vue";
 export default {
@@ -123,6 +125,7 @@ export default {
     skeletonLader,
     allProducts,
     productsByCategoryName,
+    Appbar,
   },
   data() {
     return {

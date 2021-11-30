@@ -2,7 +2,7 @@
   <!-- <hello-world /> -->
   <div class="blue-grey">
     <!-- <test /> -->
-    <!-- <appbar /> -->
+    <appbar appbarId="0" />
     <v-sheet
       id="scrolling-techniques-7"
       class="overflow-y-auto blue lighten-5"
@@ -251,7 +251,7 @@
 <script>
 import { mapState, mapGetters } from "vuex";
 import BodySection from "../components/BodySection.vue";
-// import appbar from "../components/AppBar.vue";
+import appbar from "../components/AppBar.vue";
 // import HelloWorld from "../components/HelloWorld";
 import HomeCard from "../components/homeCard.vue";
 import Footer from "./Footer.vue";
@@ -314,7 +314,7 @@ export default {
     BodySection,
     Footer,
     HomeCard,
-    // appbar,
+    appbar,
   },
   computed: {
     ...mapState(["post"]),

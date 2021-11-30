@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <Appbar />
     <v-main>
       <router-view />
     </v-main>
@@ -11,14 +10,12 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import Appbar from "./components/AppBar.vue";
+
 Vue.use(VueAxios, axios);
 
 export default {
   name: "App",
-  components: {
-    Appbar,
-  },
+  components: {},
 
   data: () => ({}),
 

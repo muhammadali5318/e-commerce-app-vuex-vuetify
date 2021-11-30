@@ -151,7 +151,7 @@ export default new Vuex.Store({
                             Vue.axios.get(`https://fakestoreapi.com/products/${product.productId}`).then((response) => {
                                 commit("SET_LOADER", false)
                                 commit('SET_CURRENTUSERCART', response.data)
-                                console.log(response);
+                                    // console.log(response);
 
 
                             })
@@ -169,6 +169,29 @@ export default new Vuex.Store({
 
             commit('SET_CURRENTUSERCART', payload)
         },
+        cartTotalPrice({ commit }) {
+            alert("cart total price")
+            console.log(commit);
+
+            // console.log(this.state.currentUserCart);
+            // console.log("comming from cart price");
+            let price = this.state.currentUserCart;
+            // console.log(price);
+            // console.log(price);
+            // for (let data in price) {
+            //     console.log(data);
+            // }
+
+            // let keys = Object.keys(price);
+
+            price.forEach(key => {
+                    // let item = price[key];
+                    console.log(key);
+                    //...work with item
+                })
+                // console.log(price);
+                // console.log(commit);
+        }
 
 
     },
