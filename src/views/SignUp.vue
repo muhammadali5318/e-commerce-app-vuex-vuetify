@@ -67,6 +67,13 @@
                 hint="Must contain 1 Small and Capital letter, 1 digit (Special Characters not allowed)"
               ></v-text-field>
 
+              <!-- ************************ Need to ask ******************************** -->
+              <!-- <v-file-input
+                accept="image/*"
+                label="File input"
+                v-on:change="storeImg"
+              ></v-file-input> -->
+
               <p class="mt-5 font-weight-light">
                 By proceeding, you agree to the
                 <a href="#">Terms and conditions</a>
@@ -121,12 +128,12 @@ export default {
         email: "",
         username: "",
         password: "",
+        // profilePicture: "",
         name: {
           firstname: "",
           lastname: "",
         },
         phone: "",
-        __v: 0,
       },
       nameRules: nameRules,
       passwordRules: passwordRules,
@@ -139,6 +146,23 @@ export default {
     };
   },
   methods: {
+    // need to ask
+    // storeImg(event) {
+    //   const reader = new FileReader();
+
+    //   reader.addEventListener(
+    //     "load",
+    //     function () {
+    //       console.log(reader.result);
+    //       // this.userData.profilePicture = reader.result;
+    //       this.x[ab] = reader.result;
+    //       console.log(this.imgBase);
+    //     },
+    //     false
+    //   );
+    //   reader.readAsDataURL(event);
+    // },
+
     submit() {
       let validate = true;
       if (this.$refs.form.validate()) {

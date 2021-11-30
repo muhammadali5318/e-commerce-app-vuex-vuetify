@@ -6,7 +6,7 @@
       <v-toolbar-title>Shopify </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-badge left content="5" overlap>
+      <v-badge left :content="getCurrentUserCartData.length" overlap>
         <v-icon style="cursor: pointer" color="grey darken-3" size="40"
           >mdi-cart
         </v-icon>
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "appbar",
   props: ["appbarId"],
@@ -83,6 +84,10 @@ export default {
       this.$router.push({ name: "SignIn" });
       localStorage.setItem("currentUser", "");
     },
+  },
+
+  computed: {
+    ...mapGetters(["getCurrentUserCartData"]),
   },
   mounted() {
     // if (localStorage.getItem("currentUser") === "") {

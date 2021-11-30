@@ -6,6 +6,7 @@
   </div> -->
   <section style="height: 100%" class="d-flex align-center blue darken-3">
     <appbar appbarId="1" />
+
     <v-container v-for="data in currentUserData" :key="data.email">
       <v-sheet elevation="10" class="rounded pa-5 py-16" color="white">
         <v-form v-on:submit.prevent="show" ref="test">
@@ -24,8 +25,14 @@
                 width="50%"
                 position="center center"
                 class="rounded-xl mb-12"
-                src="../assets/dummy.png"
+                :src="imagePath"
               ></v-img>
+
+              <v-file-input
+                accept="image/*"
+                label="File input"
+                v-on:change="storeImg"
+              ></v-file-input>
 
               <h2>{{ data.name.firstname }} {{ data.name.lastname }}</h2>
               <p>{{ data.email }}</p>
@@ -194,59 +201,32 @@ export default {
   },
   data() {
     return {
+      imagePath: "",
       currentUserData: [],
 
       currentUser: "",
       snackbar: false,
       text: "Profile Updated Successfully",
-      userData: {
-        address: {
-          geolocation: {
-            lat: "",
-            long: "",
-          },
-          city: "",
-          street: "",
-          number: "",
-          zipcode: "",
-        },
-        id: 1,
-        email: "",
-        username: "",
-        password: "",
-        name: {
-          firstname: "",
-          lastname: "",
-        },
-        phone: "",
-        __v: 0,
-      },
-      test: "",
-      updatedUser: {
-        address: {
-          geolocation: {
-            lat: "",
-            long: "",
-          },
-          city: "",
-          street: "",
-          number: "",
-          zipcode: "",
-        },
-        id: 1,
-        email: "",
-        username: "",
-        password: "",
-        name: {
-          firstname: "",
-          lastname: "",
-        },
-        phone: "",
-        __v: 0,
-      },
     };
   },
   methods: {
+    storeImg(event) {
+      const reader = new FileReader();
+
+      reader.addEventListener(
+        "load",
+        function () {
+          console.log(reader.result);
+          this.imagePath = reader.result;
+          localStorage.setItem("profile", reader.result);
+        },
+        false
+      );
+      reader.readAsDataURL(event);
+    },
+    getProfile() {
+      console.log(this.imagePath);
+    },
     show() {
       // console.log(this.$refs.emailref[0].value);
       console.log(this.$refs.fName[0].value);
@@ -270,6 +250,7 @@ export default {
         this.currentUserData.push(JSON.parse(localStorage.getItem(key)));
       }
     }
+    this.imagePath = localStorage.getItem("profile");
   },
 };
 </script>
