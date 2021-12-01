@@ -98,7 +98,7 @@
           mx-4
         "
       >
-        Categories:
+        Products:
       </div>
       <skeletonLader v-if="getLoaderState" />
       <allProducts v-if="allProductsStatus" />
@@ -148,9 +148,6 @@ export default {
     };
   },
   methods: {
-    show() {
-      alert("hello");
-    },
     next() {
       this.onboarding =
         this.onboarding + 1 === this.length ? 0 : this.onboarding + 1;
@@ -160,9 +157,9 @@ export default {
         this.onboarding - 1 < 0 ? this.length - 1 : this.onboarding - 1;
     },
     fetchProductsByCategoryName(apiId) {
-      (this.allProductsStatus = false),
-        (this.productsByCategoryNameStatue = true),
-        this.$store.dispatch("fetchProductsByCategoryName", apiId);
+      this.allProductsStatus = false;
+      this.productsByCategoryNameStatue = true;
+      this.$store.dispatch("fetchProductsByCategoryName", apiId);
     },
     fetchAllProducts() {
       this.allProductsStatus = true;

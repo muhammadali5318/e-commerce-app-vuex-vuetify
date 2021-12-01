@@ -205,9 +205,7 @@ export default {
   background: url("../assets/back.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  /* height: 100vh; */
   overflow-y: auto;
-  /* background-size: 100vw; */
 }
 .main {
   width: 100vw;

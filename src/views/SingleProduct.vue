@@ -33,10 +33,6 @@
             xl="6"
           >
             <v-card class="pa-2 fill-height blue lighten-5" flat tile>
-              <!-- <v-responsive>
-                <v-img src="../assets/back.jpg"></v-img>
-              </v-responsive>
-               -->
               <v-card-title
                 class="
                   mb-7
@@ -105,7 +101,13 @@
                 {{ getSingleProduct.description }}
               </p>
 
-              <v-btn color="blue darken-1" x-large outlined text @click="show">
+              <v-btn
+                color="blue darken-1"
+                x-large
+                outlined
+                text
+                @click="addProductToCart"
+              >
                 <span> Add to cart </span> <v-icon right>mdi-cart</v-icon>
               </v-btn>
               <v-snackbar
@@ -158,15 +160,10 @@ export default {
     ...mapGetters(["getLoaderState"]),
   },
   methods: {
-    show() {
+    addProductToCart() {
       this.snackbar = true;
-      // alert(this.getSingleProduct);
-      // console.log(this.getSingleProduct);
       this.$store.dispatch("addProductToCart", this.getSingleProduct);
     },
-    // addToCart() {
-
-    // },
     route() {
       this.$router.push({ name: "cart" });
     },

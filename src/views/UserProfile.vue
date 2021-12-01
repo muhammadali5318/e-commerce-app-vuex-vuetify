@@ -9,7 +9,7 @@
 
     <v-container v-for="data in currentUserData" :key="data.email">
       <v-sheet elevation="10" class="rounded pa-5 py-16" color="white">
-        <v-form v-on:submit.prevent="show" ref="test">
+        <v-form v-on:submit.prevent="updateProfileInfo" ref="test">
           <v-row justify="center">
             <v-col
               align-self="center"
@@ -21,18 +21,24 @@
               md="12"
               xl="4"
             >
-              <v-img
-                width="50%"
-                position="center center"
-                class="rounded-xl mb-12"
-                :src="imagePath"
-              ></v-img>
+              <v-avatar size="150" class="mb-10">
+                <img :src="imagePath" alt="John" />
+              </v-avatar>
 
-              <v-file-input
-                accept="image/*"
-                label="File input"
-                v-on:change="storeImg"
-              ></v-file-input>
+              <div class="d-flex align-center mb-3">
+                <v-file-input
+                  accept="image/*"
+                  label="Upload Profile Picture"
+                  v-on:change="storeImg"
+                ></v-file-input>
+                <v-btn
+                  color="blue darken-4"
+                  class="white--text px-10 ms-5"
+                  large
+                  v-on:click="uploadProfilePicture"
+                  >Upload</v-btn
+                >
+              </div>
 
               <h2>{{ data.name.firstname }} {{ data.name.lastname }}</h2>
               <p>{{ data.email }}</p>
@@ -54,7 +60,7 @@
                     <v-card-text>
                       <v-text-field
                         ref="fName"
-                        v-on:change="show"
+                        v-on:change="updateProfileInfo"
                         :value="data.name.firstname"
                         v-model="currentUserData[0].name.firstname"
                         label="First Name"
@@ -224,14 +230,11 @@ export default {
       );
       reader.readAsDataURL(event);
     },
-    getProfile() {
-      console.log(this.imagePath);
+
+    uploadProfilePicture() {
+      this.imagePath = localStorage.getItem("profile");
     },
-    show() {
-      // console.log(this.$refs.emailref[0].value);
-      console.log(this.$refs.fName[0].value);
-      console.log(this.$refs.lName[0].value);
-      console.log(this.currentUserData[0]);
+    updateProfileInfo() {
       localStorage.setItem(
         this.currentUserData[0].email,
         JSON.stringify(this.currentUserData[0])
@@ -239,12 +242,14 @@ export default {
     },
   },
   mounted() {
-    console.log("user profile is running");
+    //this condition is used for redirection to sign in page if user is not logged in
     if (localStorage.getItem("currentUser") === "") {
       this.$router.push({ name: "SignIn" });
     }
+
     const keys = Object.keys(localStorage);
     this.currentUser = localStorage.getItem("currentUser");
+
     for (let key of keys) {
       if (this.currentUser === key) {
         this.currentUserData.push(JSON.parse(localStorage.getItem(key)));

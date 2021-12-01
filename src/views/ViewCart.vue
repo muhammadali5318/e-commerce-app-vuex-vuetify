@@ -150,14 +150,13 @@ export default {
   methods: {
     showCart() {
       for (let data of this.getCurrentUserCartData) {
-        console.log(data.price);
         this.price += data.price;
-        // console.log();
       }
     },
     updateCart() {
       this.$store.dispatch("fetchCurrentUserCart");
     },
+
     //needs to be done
     totalPrice() {
       for (let data of this.getCurrentUserCartData) {
@@ -168,6 +167,7 @@ export default {
       console.log(this.price);
       // console.log(this.getCurrentUserCartData);
     },
+
     deleteCartItem(deleteIndex) {
       this.getCurrentUserCartData.splice(deleteIndex, 1);
       this.dialog = false;

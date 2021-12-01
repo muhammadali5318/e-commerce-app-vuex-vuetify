@@ -91,7 +91,6 @@ export default {
         const keys = Object.keys(localStorage);
 
         for (let key of keys) {
-          console.log(this.user.email);
           if (this.user.email === key) {
             if (
               this.user.pass === JSON.parse(localStorage.getItem(key)).password
@@ -119,7 +118,6 @@ export default {
   background: url("../assets/back.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  /* background-size: 100vw; */
   overflow-y: auto;
 }
 .main {

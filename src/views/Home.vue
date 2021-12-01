@@ -1,7 +1,5 @@
 <template>
-  <!-- <hello-world /> -->
   <div class="blue-grey">
-    <!-- <test /> -->
     <appbar appbarId="0" />
     <v-sheet
       id="scrolling-techniques-7"
@@ -12,10 +10,6 @@
         <v-row gutters>
           <v-col cols="12" xs="12" sm="12" md="12" lg="5" xl="5">
             <v-card class="pa-2 fill-height blue lighten-5" flat tile>
-              <!-- <v-responsive>
-                <v-img src="../assets/back.jpg"></v-img>
-              </v-responsive>
-               -->
               <div
                 class="
                   blue--text
@@ -157,7 +151,6 @@
               </template>
 
               <v-img height="250" :src="data.image"></v-img>
-              <!-- <img height="250" src="../assets/cat/men.jpg" alt="" /> -->
               <v-card-title>{{ data.categoryName }}</v-card-title>
 
               <v-card-text>
@@ -173,8 +166,6 @@
 
                   <div class="grey--text ms-4">4.5 (413)</div>
                 </v-row>
-
-                <!-- <div class="my-4 text-subtitle-1">$ • Italian, Cafe</div> -->
 
                 <div class="my-4">
                   Clothing, jewelery & Electronics - You can find every thing
@@ -240,7 +231,6 @@
         </v-row>
       </v-container>
     </v-sheet>
-    <!-- ***************************************************************** -->
     <!-- ***************************************************************** -->
     <BodySection />
     <HomeCard />

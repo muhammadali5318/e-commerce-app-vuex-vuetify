@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-// import { all } from 'core-js/library/es6/promise'
 
 Vue.use(VueAxios, axios)
 Vue.use(Vuex)
@@ -149,6 +148,7 @@ export default new Vuex.Store({
         addProductToCart({ commit }, payload) {
             commit('SET_CURRENTUSERCART', payload)
         },
+
         // ********************Need to ask **********************************
         // cartTotalPrice({ commit }) {
         //     // alert("cart total price")
