@@ -118,7 +118,7 @@ export default new Vuex.Store({
         },
         //This function will fetch the cart details of user. if the logged in user is from api
         fetchCurrentUserCart({ commit }) {
-            console.log("fetching cart");
+            // console.log("fetching cart");
             let currentUserId = localStorage.getItem('currentUser');
             currentUserId = JSON.parse(localStorage.getItem(currentUserId)).id;
 
@@ -148,29 +148,33 @@ export default new Vuex.Store({
             commit('SET_CURRENTUSERCART', payload)
         },
 
-        // ********************Need to ask **********************************
-        // cartTotalPrice({ commit }) {
-        //     // alert("cart total price")
+        // ********************I will work on it thats why it is commented **********************************
+        // cartTotalPrice({ commit, state }) {
+        //     alert("cart total price")
         //     console.log(commit);
+        //     const propertyNames = Object.keys(state.currentUserCart[0]);
+        // const temp = .toArray();
+        // console.log(temp);
+        // console.log(typeof propertyNames);
+        // console.log(propertyNames);
+        // console.log(this.state.currentUserCart);
+        // console.log("comming from cart price");
+        // let price = this.state.currentUserCart;
+        // console.log(price);
+        // console.log(price);
+        // for (let data in price) {
+        //     console.log(data);
+        // }
 
-        //     // console.log(this.state.currentUserCart);
-        //     // console.log("comming from cart price");
-        //     let price = this.state.currentUserCart;
-        //     // console.log(price);
-        //     // console.log(price);
-        //     // for (let data in price) {
-        //     //     console.log(data);
-        //     // }
+        // let keys = Object.keys(price);
 
-        //     // let keys = Object.keys(price);
-
-        //     price.forEach(key => {
-        //             // let item = price[key];
-        //             console.log(key);
-        //             //...work with item
-        //         })
-        //         // console.log(price);
-        //         // console.log(commit);
+        // price.forEach(key => {
+        //         // let item = price[key];
+        //         console.log(key);
+        //         //...work with item
+        //     })
+        // console.log(price);
+        // console.log(commit);
         // }
 
 

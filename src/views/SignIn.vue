@@ -89,6 +89,7 @@ export default {
     submit() {
       if (this.$refs.form.validate()) {
         const keys = Object.keys(localStorage);
+        console.log();
 
         for (let key of keys) {
           if (this.user.email === key) {

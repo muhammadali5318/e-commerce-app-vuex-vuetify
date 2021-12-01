@@ -68,11 +68,12 @@
               ></v-text-field>
 
               <!-- ************************ Need to ask ******************************** -->
-              <!-- <v-file-input
+              <v-file-input
                 accept="image/*"
-                label="File input"
+                label="Upload Profile Picture"
                 v-on:change="storeImg"
-              ></v-file-input> -->
+                required
+              ></v-file-input>
 
               <p class="mt-5 font-weight-light">
                 By proceeding, you agree to the
@@ -128,7 +129,7 @@ export default {
         email: "",
         username: "",
         password: "",
-        // profilePicture: "",
+        profilePicture: "",
         name: {
           firstname: "",
           lastname: "",
@@ -147,21 +148,19 @@ export default {
   },
   methods: {
     // need to ask
-    // storeImg(event) {
-    //   const reader = new FileReader();
+    storeImg(event) {
+      let vm = this;
+      const reader = new FileReader();
 
-    //   reader.addEventListener(
-    //     "load",
-    //     function () {
-    //       console.log(reader.result);
-    //       // this.userData.profilePicture = reader.result;
-    //       this.x[ab] = reader.result;
-    //       console.log(this.imgBase);
-    //     },
-    //     false
-    //   );
-    //   reader.readAsDataURL(event);
-    // },
+      reader.addEventListener(
+        "load",
+        function () {
+          vm.userData.profilePicture = reader.result;
+        },
+        false
+      );
+      reader.readAsDataURL(event);
+    },
 
     submit() {
       let validate = true;

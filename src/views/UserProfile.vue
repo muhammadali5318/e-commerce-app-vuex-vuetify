@@ -22,7 +22,7 @@
               xl="4"
             >
               <v-avatar size="150" class="mb-10">
-                <img :src="imagePath" alt="John" />
+                <img :src="imagePath" alt="upload" />
               </v-avatar>
 
               <div class="d-flex align-center mb-3">
@@ -35,7 +35,7 @@
                   color="blue darken-4"
                   class="white--text px-10 ms-5"
                   large
-                  v-on:click="uploadProfilePicture"
+                  v-on:click="updateProfileInfo"
                   >Upload</v-btn
                 >
               </div>
@@ -218,23 +218,20 @@ export default {
   methods: {
     storeImg(event) {
       const reader = new FileReader();
-
+      const vm = this;
       reader.addEventListener(
         "load",
         function () {
-          console.log(reader.result);
           this.imagePath = reader.result;
-          localStorage.setItem("profile", reader.result);
+          vm.currentUserData[0].profilePicture = reader.result;
         },
         false
       );
       reader.readAsDataURL(event);
     },
 
-    uploadProfilePicture() {
-      this.imagePath = localStorage.getItem("profile");
-    },
     updateProfileInfo() {
+      this.imagePath = this.currentUserData[0].profilePicture;
       localStorage.setItem(
         this.currentUserData[0].email,
         JSON.stringify(this.currentUserData[0])
@@ -255,7 +252,7 @@ export default {
         this.currentUserData.push(JSON.parse(localStorage.getItem(key)));
       }
     }
-    this.imagePath = localStorage.getItem("profile");
+    this.imagePath = this.currentUserData[0].profilePicture;
   },
 };
 </script>
