@@ -39,8 +39,8 @@ export default new Vuex.Store({
     },
     actions: {
 
+        //this function will fetch all the products of specific category on which uesr clicked
         fetchProductsByCategoryName({ commit }, payload) {
-
             commit('SET_LOADER', true)
             Vue.axios.get(`https://fakestoreapi.com/products/category/${payload}`).then((response) => {
                 let data = response.data;
@@ -50,10 +50,11 @@ export default new Vuex.Store({
             })
 
         },
+        //this function will fetch all the products availabe in fakeApi 
         fetchAllProducts({ commit }, payload) {
 
+            //this condition will fetch prodcts in desc order
             if (payload == "desc") {
-
                 commit("SET_LOADER", true)
 
                 Vue.axios.get(`https://fakestoreapi.com/products?sort=${payload}`).then((response) => {
@@ -66,10 +67,9 @@ export default new Vuex.Store({
 
 
                 })
-            } else if (payload == "asc") {
+            } else if (payload == "asc") { //this condition will fetch prodcts in ascending order
 
-                commit("SET_LOADER", true)
-
+                commit("SET_LOADER", true) //this commit will enable the loader until the api respose came
                 Vue.axios.get(`https://fakestoreapi.com/products?sort=${payload}`).then((response) => {
                     let data = response.data;
                     commit('SET_ALL_PRODUCTS', data);
@@ -77,16 +77,15 @@ export default new Vuex.Store({
 
 
                 })
-            } else if (!isNaN(payload)) {
+            } else if (!isNaN(payload)) { //this condition will fetch products according to limit that user select
                 commit("SET_LOADER", true)
-
                 Vue.axios.get(`https://fakestoreapi.com/products?limit=${payload}`).then((response) => {
                     let data = response.data;
                     commit('SET_ALL_PRODUCTS', data);
                     commit("SET_LOADER", false)
 
                 })
-            } else {
+            } else { //this function will fetch all the products availabe in fakeApi 
                 commit("SET_LOADER", true)
                 Vue.axios.get("https://fakestoreapi.com/products?limit=20").then((response) => {
                     let data = response.data;
@@ -97,6 +96,7 @@ export default new Vuex.Store({
             }
         },
 
+        //this function will fetch single product on which user clicks 
         fetchSingleProductData({ commit }, payload) {
             commit('SET_LOADER', true);
             Vue.axios.get(`https://fakestoreapi.com/products/${payload}`).then((response) => {
@@ -105,6 +105,7 @@ export default new Vuex.Store({
                 commit('SET_LOADER', false);
             })
         },
+        //this function will fetch all the users from api and store them in local storage 
         fetchAllUsers({ commit }) {
             console.log("fetching all users from api is running");
             Vue.axios.get(`https://fakestoreapi.com/users`).then((response) => {
@@ -115,6 +116,7 @@ export default new Vuex.Store({
                 }
             })
         },
+        //This function will fetch the cart details of user. if the logged in user is from api
         fetchCurrentUserCart({ commit }) {
             console.log("fetching cart");
             let currentUserId = localStorage.getItem('currentUser');
@@ -131,9 +133,6 @@ export default new Vuex.Store({
                             Vue.axios.get(`https://fakestoreapi.com/products/${product.productId}`).then((response) => {
                                 commit("SET_LOADER", false)
                                 commit('SET_CURRENTUSERCART', response.data)
-
-
-
                             })
 
                         }
