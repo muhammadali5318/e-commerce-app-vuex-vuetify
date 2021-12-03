@@ -110,6 +110,9 @@ export default {
   computed: {
     ...mapState({ msg: (state) => state.SignUp.message }),
   },
+  mounted() {
+    document.title = "Login";
+  },
 };
 </script>
 

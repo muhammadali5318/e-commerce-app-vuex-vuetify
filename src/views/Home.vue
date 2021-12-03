@@ -231,22 +231,17 @@
         </v-row>
       </v-container>
     </v-sheet>
-    <!-- ***************************************************************** -->
     <BodySection />
     <HomeCard />
     <Footer />
-    <!-- <About /> -->
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
 import BodySection from "../components/BodySection.vue";
 import appbar from "../components/AppBar.vue";
-// import HelloWorld from "../components/HelloWorld";
 import HomeCard from "../components/homeCard.vue";
 import Footer from "./Footer.vue";
-// import About from "./About.vue";
 
 export default {
   name: "Home",
@@ -298,31 +293,21 @@ export default {
     };
   },
   components: {
-    // about,
-    // About,
-    // test,/
-    // HelloWorld,
     BodySection,
     Footer,
     HomeCard,
     appbar,
   },
-  computed: {
-    ...mapState(["post"]),
-    ...mapGetters({ d: "getCat" }),
-  },
   methods: {
     route() {
       this.$router.push({ name: "ProductsView" });
     },
-    // fetchdata(apiId) {
-    //   this.$store.dispatch("apiCall", apiId);
-    // },
   },
   mounted() {
     if (localStorage.getItem("currentUser") === "") {
       this.$router.push({ name: "SignIn" });
     }
+    document.title = "Home";
   },
 };
 </script>

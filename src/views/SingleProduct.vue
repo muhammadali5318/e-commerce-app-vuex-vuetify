@@ -11,14 +11,13 @@
       <v-container class="my-16 rounded-lg blue lighten-5">
         <v-row class="d-flex justify-center" gutters>
           <v-col align-self="center" cols="12" xs="12" md="12" lg="6" xl="6">
-            <v-card
-              class="pa-2 fill-height blue lighten-5"
-              flat
-              tile
-              max-width="100%"
-            >
+            <v-card class="pa-2 fill-height blue lighten-5" flat tile>
               <v-responsive>
-                <v-img class="rounded-lg" :src="getSingleProduct.image"></v-img>
+                <v-img
+                  class="rounded-lg"
+                  contain
+                  :src="getSingleProduct.image"
+                ></v-img>
               </v-responsive>
             </v-card>
           </v-col>
@@ -167,6 +166,9 @@ export default {
     route() {
       this.$router.push({ name: "cart" });
     },
+  },
+  mounted() {
+    document.title = "Product page";
   },
 };
 </script>

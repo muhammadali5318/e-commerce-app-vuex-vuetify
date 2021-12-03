@@ -253,6 +253,7 @@ export default {
       }
     }
     this.imagePath = this.currentUserData[0].profilePicture;
+    document.title = "User Profle";
   },
 };
 </script>

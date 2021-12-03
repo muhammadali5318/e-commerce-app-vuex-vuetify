@@ -1,3 +1,11 @@
+/*
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose: This file store/index.js is the global state management file for this system all the api calling, mutation and state handling is performed in this files.*/
+
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
@@ -8,16 +16,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        post: "",
+        ProductsDataByCategoryName: "",
         allUsers: [],
         currentUserCart: [],
         singleProductData: [],
         allProductsData: [],
         showLoader: false,
+        totalCartPrice: undefined,
     },
     mutations: {
-        SET_CAT(state, post) {
-            state.post = post;
+        SET_CAT(state, ProductsDataByCategoryName) {
+            state.ProductsDataByCategoryName = ProductsDataByCategoryName;
 
         },
         SET_ALLUSERS(state, allUsers) {
@@ -35,6 +44,9 @@ export default new Vuex.Store({
         },
         SET_ALL_PRODUCTS(state, allProducts) {
             state.allProductsData = allProducts;
+        },
+        SET_CART_TOTAL_PRICE(state, sum) {
+            state.totalCartPrice = sum;
         }
     },
     actions: {
@@ -144,44 +156,41 @@ export default new Vuex.Store({
 
         },
         //When user click on add to cart button this action will be fired and product will be pushed into the array
-        addProductToCart({ commit }, payload) {
+        addProductToCart({ commit, state }, payload) {
+            let sum = 0;
             commit('SET_CURRENTUSERCART', payload)
+            setTimeout(() => {
+
+                const propertyNames = Object.keys(state.currentUserCart);
+                propertyNames.forEach(function(x) {
+                    sum += state.currentUserCart[x].price;
+                    commit("SET_CART_TOTAL_PRICE", sum);
+                })
+            }, 2000);
+            commit("SET_CART_TOTAL_PRICE", sum);
         },
 
         // ********************I will work on it thats why it is commented **********************************
-        // cartTotalPrice({ commit, state }) {
-        //     alert("cart total price")
-        //     console.log(commit);
-        //     const propertyNames = Object.keys(state.currentUserCart[0]);
-        // const temp = .toArray();
-        // console.log(temp);
-        // console.log(typeof propertyNames);
-        // console.log(propertyNames);
-        // console.log(this.state.currentUserCart);
-        // console.log("comming from cart price");
-        // let price = this.state.currentUserCart;
-        // console.log(price);
-        // console.log(price);
-        // for (let data in price) {
-        //     console.log(data);
-        // }
+        cartTotalPrice({ commit, state }) {
+            console.log("cart total price");
 
-        // let keys = Object.keys(price);
+            let sum = 0;
+            setTimeout(() => {
 
-        // price.forEach(key => {
-        //         // let item = price[key];
-        //         console.log(key);
-        //         //...work with item
-        //     })
-        // console.log(price);
-        // console.log(commit);
-        // }
+                const propertyNames = Object.keys(state.currentUserCart);
+                propertyNames.forEach(function(x) {
+                    sum += state.currentUserCart[x].price;
+                    commit("SET_CART_TOTAL_PRICE", sum);
+                })
+            }, 2000);
+
+        }
 
 
     },
     getters: {
         getCat(state) {
-            return state.post;
+            return state.ProductsDataByCategoryName;
         },
         getSingleProduct(state) {
             return state.singleProductData;
@@ -194,6 +203,9 @@ export default new Vuex.Store({
         },
         getAllProducts(state) {
             return state.allProductsData;
+        },
+        getTotalCartPrice(state) {
+            return state.totalCartPrice;
         }
     },
     modules: {}

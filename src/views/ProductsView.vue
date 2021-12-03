@@ -115,7 +115,7 @@ import allProducts from "../components/AllProducts.vue";
 import productsByCategoryName from "../components/ProductsByCategoryName.vue";
 import skeletonLader from "../components/SkeletonLoader.vue";
 import Appbar from "../components/AppBar.vue";
-import { mapState, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import Footer from "./Footer.vue";
 export default {
   name: "ProductsView",
@@ -172,7 +172,6 @@ export default {
     },
   },
   computed: {
-    ...mapState(["post"]),
     ...mapGetters(["getLoaderState"]),
   },
   mounted() {
@@ -180,6 +179,7 @@ export default {
       this.$router.push({ name: "SignIn" });
     }
     this.$store.dispatch("fetchProductsByCategoryName", "jewelery");
+    document.title = "Products View";
   },
 };
 </script>

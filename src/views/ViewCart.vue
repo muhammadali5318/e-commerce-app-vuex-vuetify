@@ -1,16 +1,13 @@
 <template>
   <div class="blue darken-2">
-    <!-- *********************************************************** -->
     <Appbar appbarId="3" />
-    <!-- *********************************************************** -->
-
     <skeletonLader v-if="getLoaderState" />
     <v-container class="py-16">
       <v-row>
         <v-col
           class="my-1"
           v-for="(data, index) in getCurrentUserCartData"
-          :key="data.id"
+          :key="index"
           cols="12"
           lg="12"
         >
@@ -97,20 +94,14 @@
                 <v-col cols="12" xs="12" sm="12" md="12" lg="6" xl="6">
                   <div class="ps-16 d-flex">
                     <div>
-                      <v-card-title
-                        >Total Price
-                        <v-btn class="ms-4" @click="showCart"
-                          >Total Price</v-btn
-                        >
-                      </v-card-title>
-                      <!-- <v-card-subtitle></v-card-subtitle> -->
+                      <v-card-title>Total Price </v-card-title>
                     </div>
                   </div>
                 </v-col>
                 <v-col cols="12" xs="12" sm="12" md="12" lg="6" xl="6">
                   <div class="pe-16 d-flex align-center justify-end">
                     <div>
-                      <h1 class="px-5">${{ this.price }}</h1>
+                      <h1 class="px-5">${{ getTotalCartPrice }}</h1>
                     </div>
                   </div>
                 </v-col>
@@ -119,7 +110,6 @@
           </v-card>
         </v-col>
       </v-row>
-      <!-- <div>{{ getCurrentUserCartData }}</div> -->
     </v-container>
     <HomeCard />
     <Footer />
@@ -148,26 +138,6 @@ export default {
     };
   },
   methods: {
-    showCart() {
-      for (let data of this.getCurrentUserCartData) {
-        this.price += data.price;
-      }
-    },
-    updateCart() {
-      this.$store.dispatch("fetchCurrentUserCart");
-    },
-
-    //needs to be done
-    totalPrice() {
-      for (let data of this.getCurrentUserCartData) {
-        console.log(data.price);
-        console.log(typeof data.price);
-        this.price += data.price;
-      }
-      console.log(this.price);
-      // console.log(this.getCurrentUserCartData);
-    },
-
     deleteCartItem(deleteIndex) {
       this.getCurrentUserCartData.splice(deleteIndex, 1);
       this.dialog = false;
@@ -177,12 +147,16 @@ export default {
   computed: {
     ...mapGetters(["getCurrentUserCartData"]),
     ...mapGetters(["getLoaderState"]),
+    ...mapGetters(["getTotalCartPrice"]),
   },
   mounted() {
     if (localStorage.getItem("currentUser") === "") {
       this.$router.push({ name: "SignIn" });
     }
-    // this.$store.dispatch("cartTotalPrice");
+    setTimeout(() => {
+      this.$store.dispatch("cartTotalPrice");
+    }, 3000);
+    document.title = "View Cart";
   },
 };
 </script>

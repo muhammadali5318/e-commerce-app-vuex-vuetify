@@ -1,3 +1,11 @@
+
+    <!-- 
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose: This file signUp.vue is responsible to handle all user data filled in Si.
+ -->
 <template>
   <div class="wrapper">
     <section class="main">
@@ -151,7 +159,6 @@ export default {
     storeImg(event) {
       let vm = this;
       const reader = new FileReader();
-
       reader.addEventListener(
         "load",
         function () {
@@ -195,6 +202,9 @@ export default {
   },
   computed: {
     ...mapState({ msg: (state) => state.SignUp.message }),
+  },
+  mounted() {
+    document.title = "Sign Up";
   },
 };
 </script>

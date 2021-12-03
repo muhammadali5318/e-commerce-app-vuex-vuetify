@@ -55,7 +55,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "productsByCategoryName",
   methods: {
@@ -65,7 +65,6 @@ export default {
     },
   },
   computed: {
-    ...mapState(["post"]),
     ...mapGetters(["getCat"]),
     ...mapGetters(["getSingleProduct"]),
     ...mapGetters(["getLoaderState"]),
