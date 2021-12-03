@@ -1,3 +1,8 @@
+<!-- 
+this file components/BodySection.vue is just a design component used hi home.vue 
+-->
+
+
 <template>
   <v-sheet
     id="scrolling-techniques-7"
@@ -16,10 +21,6 @@
           xl="6"
         >
           <v-card class="pa-2 fill-height blue lighten-5" flat tile>
-            <!-- <v-responsive>
-                <v-img src="../assets/back.jpg"></v-img>
-              </v-responsive>
-               -->
             <div
               class="
                 mb-7

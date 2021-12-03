@@ -4,7 +4,7 @@ System: E-commerce App using Dummy Api
 Developer: Muhammad Ali
 Date: Dec 3, 2021
 Organization: Programmer Force
-Purpose: This file signUp.vue is responsible to handle all user data filled in Si.
+Purpose: This file signUp.vue is responsible to handle all user data filled in Sign up form.
  -->
 <template>
   <div class="wrapper">

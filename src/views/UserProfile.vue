@@ -1,9 +1,12 @@
+<!--
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose: In this file Views/UserProfile.vue all User details will be shown in this componenet -->
+
+
 <template>
-  <!-- <div>
-    <div v-for="data in currentUserData" :key="data.email">
-      <input type="text" :value="data.email" />
-    </div>
-  </div> -->
   <section style="height: 100%" class="d-flex align-center blue darken-3">
     <appbar appbarId="1" />
 

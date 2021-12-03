@@ -1,3 +1,12 @@
+<!--
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose:  This file View/Footer.vue is used in all our project as footer -->
+
+
+
 <template>
   <v-footer dark padless>
     <v-card flat tile class="blue darken-2 white--text text-center">

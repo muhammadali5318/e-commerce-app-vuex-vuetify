@@ -1,3 +1,12 @@
+/*
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose:  All the routers usesd in this system are defined here in this router/index.js file*/
+
+
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'

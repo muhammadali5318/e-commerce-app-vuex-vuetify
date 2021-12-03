@@ -1,3 +1,7 @@
+<!-- 
+this file components/AppBar.vue is the main header main Navbar used in all the components 
+-->
+
 <template>
   <div>
     <v-app-bar class="blue lighten-3 text-white mb-16" app>

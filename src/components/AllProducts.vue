@@ -1,6 +1,10 @@
+<!--
+in this file all the products data is fetched from api and it will be rendered here in this file.
+ -->
+
+
 <template>
   <div>
-    <!-- ************************************************************************* -->
     <v-row>
       <v-col cols="12" class="mt-7 py-2 px-13">
         <h3 class="ms-2 mb-5">Filter Results:</h3>
@@ -85,11 +89,12 @@
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "allProducts",
   data() {
     return {
+      // this object is used to apply filter in 
       items: [
         { title: "fetch 5", id: 5 },
         { title: "fetch 10", id: 10 },
@@ -121,7 +126,6 @@ export default {
     },
   },
   computed: {
-    ...mapState(["post"]),
     ...mapGetters(["getCat"]),
     ...mapGetters(["getSingleProduct"]),
     ...mapGetters(["getLoaderState"]),

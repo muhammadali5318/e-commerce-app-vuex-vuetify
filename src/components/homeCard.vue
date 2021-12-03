@@ -1,3 +1,7 @@
+<!-- 
+this file components/homeCard.vue is just a design component used hi home.vue 
+-->
+
 <template>
   <v-sheet
     id="scrolling-techniques-7"

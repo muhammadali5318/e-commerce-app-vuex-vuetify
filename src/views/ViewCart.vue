@@ -1,3 +1,11 @@
+<!--
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose: In this file View/ViewCart.vue all the products that user added into the cart will be shown here -->
+
+
 <template>
   <div class="blue darken-2">
     <Appbar appbarId="3" />

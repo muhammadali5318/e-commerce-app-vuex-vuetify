@@ -1,3 +1,12 @@
+<!--
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose:  This file View/Home.vue is the landing page of our app. -->
+
+
+
 <template>
   <div class="blue-grey">
     <appbar appbarId="0" />

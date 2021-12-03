@@ -1,3 +1,14 @@
+<!--
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose:  this file the main functional file of our project View/ProducstsView.vue. 
+All the category will be shown here. 
+when user click on some specific category all the products will be rendered in this component -->
+
+
+
 <template>
   <div class="blue darken-2">
     <Appbar appbarId="2" />

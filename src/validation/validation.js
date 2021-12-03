@@ -3,7 +3,7 @@ System: E-commerce App using Dummy Api
 Developer: Muhammad Ali
 Date: Dec 3, 2021
 Organization: Programmer Force
-Purpose: This file validation.js is responsible to handle all the validations required in Signup and Login.*/
+Purpose: This file validation.js is responsible to handle all the form validations required in Signup and Login.*/
 
 
 const nameRules = [

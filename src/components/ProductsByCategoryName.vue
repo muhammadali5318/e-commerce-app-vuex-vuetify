@@ -1,3 +1,7 @@
+<!--
+in this file all the categories data fetched from api will be rendered here in this file.
+ -->
+
 <template>
   <div>
     <v-row>
@@ -12,11 +16,9 @@
         xl="3"
       >
         <v-card class="mx-auto my-12" max-width="374">
-          <!-- <v-img height="250" src="../assets/cat/men.jpg"></v-img> -->
           <v-responsive height="250">
             <v-img height="100%" :src="data.image" alt=""></v-img>
           </v-responsive>
-          <!-- <img /> -->
           <v-card-title style="height: 10rem">{{ data.title }}</v-card-title>
 
           <v-card-text>
@@ -40,7 +42,6 @@
           <v-divider></v-divider>
 
           <v-card-actions>
-            <!-- <v-btn color="deep-purple lighten-2" text @click="route"> -->
             <v-btn
               color="blue lighten-2"
               text

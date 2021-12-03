@@ -72,8 +72,6 @@ export default new Vuex.Store({
                 Vue.axios.get(`https://fakestoreapi.com/products?sort=${payload}`).then((response) => {
                     let data = response.data;
 
-                    console.log(data);
-
                     commit('SET_ALL_PRODUCTS', data);
                     commit("SET_LOADER", false)
 
@@ -130,7 +128,7 @@ export default new Vuex.Store({
         },
         //This function will fetch the cart details of user. if the logged in user is from api
         fetchCurrentUserCart({ commit }) {
-            // console.log("fetching cart");
+
             let currentUserId = localStorage.getItem('currentUser');
             currentUserId = JSON.parse(localStorage.getItem(currentUserId)).id;
 
@@ -170,10 +168,8 @@ export default new Vuex.Store({
             commit("SET_CART_TOTAL_PRICE", sum);
         },
 
-        // ********************I will work on it thats why it is commented **********************************
+        // ********************I this action will calculte the total price of  **********************************
         cartTotalPrice({ commit, state }) {
-            console.log("cart total price");
-
             let sum = 0;
             setTimeout(() => {
 

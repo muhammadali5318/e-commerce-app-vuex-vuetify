@@ -1,3 +1,7 @@
+<!--
+This is the loading skeleton. it is used when data is fetched from api
+-->
+
 <template>
   <div>
     <v-container>

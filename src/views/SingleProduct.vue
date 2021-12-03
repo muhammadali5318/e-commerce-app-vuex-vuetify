@@ -1,3 +1,11 @@
+<!--
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose: This file View/ViewCart.vue is responsile for viewing the single product details -->
+
+
 <template>
   <div>
     <appbar appbarId="2" />

@@ -1,3 +1,11 @@
+<!--
+System: E-commerce App using Dummy Api
+Developer: Muhammad Ali
+Date: Dec 3, 2021
+Organization: Programmer Force
+Purpose:  this file View/SignIn.vue is responsible for user authentication and login into the system -->
+
+
 <template>
   <div class="wrapper">
     <section class="main">
